@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  browseruse:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: browseruse:latest
+    container_name: browseruse
+    ports:
+      - "9242:9242"
+      - "9222:9222"
+    volumes:
+      - ./data:/data
+    env_file:
+      - .env
+    restart: unless-stopped 

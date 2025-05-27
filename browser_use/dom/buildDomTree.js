@@ -846,6 +846,15 @@
       // If checking listeners fails, rely on other checks
     }
 
+    // Patch for Xero: treat <div> inside <td> (with class x-grid3-cell-inner or x-grid3-cell) as interactive
+    if (
+      tagName === 'div' &&
+      element.parentElement &&
+      element.parentElement.tagName.toLowerCase() === 'td'
+    ) {
+      return true;
+    }
+
     return false
   }
 
